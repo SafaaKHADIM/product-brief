@@ -4,7 +4,6 @@ import axios from 'axios';
 
 export const fetchProducts = () => dispatch => {
   axios.get('http://localhost:3000/products')
-    .then(res => res.json())
     .then(products =>
       dispatch({
         type: FETCH_PRODUCTS,
@@ -15,7 +14,6 @@ export const fetchProducts = () => dispatch => {
 
 export const fetchBriefs = () => dispatch => {
   axios.get('http://localhost:3000/briefs')
-    .then(res => res.json())
     .then(briefs =>
       dispatch({
         type: FETCH_BRIEFS,
@@ -26,8 +24,9 @@ export const fetchBriefs = () => dispatch => {
 
 
 export const createBrief = postData => dispatch => {
+  console.log("createBrief hhhhhhhhhhhhh");
   axios.post('http://localhost:3000/briefs', {postData} )
-    .then(res => res.json())
+
     .then(brief =>
       dispatch({
         type: NEW_BRIEF,
