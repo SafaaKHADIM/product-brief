@@ -1,4 +1,4 @@
-import { FETCH_PRODUCTS, NEW_BRIEF, FETCH_BRIEFS } from './types';
+import { FETCH_PRODUCTS, NEW_BRIEF, FETCH_BRIEFS, FIND_PRODUCT_BY_ID } from './types';
 import axios from 'axios';
 
 
@@ -31,6 +31,17 @@ export const createBrief = postData => dispatch => {
       dispatch({
         type: NEW_BRIEF,
         payload: brief
+      })
+    );
+};
+
+
+export const findproduct = (id) => dispatch => {
+  axios.get('http://localhost:3000/fetchProducts?'+id)
+    .then(product =>
+      dispatch({
+        type: FETCH_BRIEFS,
+        payload: product
       })
     );
 };

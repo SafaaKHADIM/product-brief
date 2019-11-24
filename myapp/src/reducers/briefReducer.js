@@ -1,9 +1,10 @@
-import { FETCH_PRODUCTS, NEW_BRIEF, FETCH_BRIEFS } from '../actions/types';
+import { FETCH_PRODUCTS, NEW_BRIEF, FETCH_BRIEFS , FIND_PRODUCT_BY_ID} from '../actions/types';
 
 const initialState = {
   products: [],
   briefs: [],
-  brief: {}
+  brief: {},
+  product:''
 };
 
 export default function(state = initialState, action) {
@@ -22,6 +23,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         briefs: action.payload
+      };
+    case FIND_PRODUCT_BY_ID:
+      return {
+        ...state,
+        product: action.payload
       };
     default:
       return state;
