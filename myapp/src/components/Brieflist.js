@@ -14,7 +14,7 @@ class  Brieflist extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
+      names: [],
   }
 }
 
@@ -22,68 +22,45 @@ class  Brieflist extends Component{
 
  async componentWillMount() {
    await this.props.fetchBriefs();
-   console.log("componentDidMount", this.props.briefs.data )
-   if(typeof(this.props.briefs.data)!="undefined"  ){
-     console.log("componentDidMount ? ? ? " )
-
-     for (const brief of this.props.briefs.data){
-       console.log("breif", brief);
-       await this.props.findproduct(brief.productId)
-
-     }
-
-   }
 }
 
+
 async shouldComponentUpdate(nextProps, nextState){
-  console.log("should it ?")
   if(JSON.stringify(nextProps.briefs.data) !== JSON.stringify(this.props.briefs.data) ){
     console.log("it should !!!!!!!",nextProps.briefs.data)
-
     for (const brief of nextProps.briefs.data){
-      console.log("breif", brief);
-      await this.props.findproduct(brief.productId)
-
+      console.log("breif2", brief);
+      await this.props.findproduct(brief.productId);
+      console.log(nextProps.product);
     }
+  }
+  let names = nextProps.product.data;
+  if (typeof(names)!="undefined"){
+    this.state.names.push(names[0].name);
   }
 }
 
 
 
-// async componentDidMount() {
-//
-// if(typeof(this.props.briefs.data)!="undefined"  ){
-//     this.props.briefs.data.map(brief =>{this.props.findproduct(brief.productId);
-//   })
-// // console.log("raha db defined");
-// // console.log(this.props.product);
-// }
-// else {
-//   console.log("ana f else :')'");
-//   await this.props.fetchBriefs();
-//   this.componentDidMount();
-// }
-//
-// }
-
 briefslist(){
-
   if(typeof(this.props.briefs.data)!="undefined"  ){
-    console.log("the big brief", this.props.briefs)
+  let i =-1;
   return this.props.briefs.data.map(brief => {
+    i++;
       return (
         <div>
         <ListItem >{brief.title}</ListItem>
         <ListItem >{brief.comment}</ListItem>
-        <ListItem ></ListItem>
+        <ListItem >{this.state.names[i]}</ListItem>
         </div>
       );
     })
   }
 }
 
-render(){
 
+
+render(){
 return (
   <div>
   {this.briefslist()}

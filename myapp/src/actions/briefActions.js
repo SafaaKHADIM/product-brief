@@ -25,7 +25,6 @@ export const fetchBriefs =  () => dispatch => {
 
 
 export const createBrief = postData => dispatch => {
-  console.log("createBrief hhhhhhhhhhhhh");
   axios.post('http://localhost:3000/briefs', {postData} )
 
     .then(brief =>
@@ -38,7 +37,7 @@ export const createBrief = postData => dispatch => {
 
 
 export const findproduct = (id) => dispatch => {
-  axios.get('http://localhost:3000/products?'+id)
+  axios.get('http://localhost:3000/products?id='+id)
     .then(product =>
       dispatch({
         type: FIND_PRODUCT_BY_ID,
