@@ -25,7 +25,7 @@ constructor(props) {
   this.state = {
     title: '',
     comment: '',
-    productid:''
+    productId:''
   };
   this.onChange = this.onChange.bind(this);
   this.onSubmit = this.onSubmit.bind(this);
@@ -37,11 +37,11 @@ onChange(e) {
   }
 
 onSubmit(e) {
-  e.preventDefault();
+//  e.preventDefault();
   const brief = {
     title: this.state.title,
     comment: this.state.comment,
-    productid:this.state.productid
+    productId:this.state.productId
   };
   this.props.createBrief(brief);
 }
@@ -71,7 +71,7 @@ return (
         <TextField name="comment" label="comment" onChange={this.onChange} value={this.state.comment} />
         <br/>
         <br/>
-        <Select name="productid" onChange={this.onChange} defaultValue="" input={<Input id="grouped-select" />}>
+        <Select name="productId" onChange={this.onChange} defaultValue="" input={<Input id="grouped-select" />}>
           {this.productslist()}
         </Select>
         <br/>

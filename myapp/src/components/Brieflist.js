@@ -36,6 +36,7 @@ async shouldComponentUpdate(nextProps, nextState){
   }
   let names = nextProps.product.data;
   if (typeof(names)!="undefined"){
+    console.log(typeof(names));
     this.state.names.push(names[0].name);
   }
 }

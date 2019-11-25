@@ -25,7 +25,7 @@ export const fetchBriefs =  () => dispatch => {
 
 
 export const createBrief = postData => dispatch => {
-  axios.post('http://localhost:3000/briefs', {postData} )
+  axios.post('http://localhost:3000/briefs', postData )
 
     .then(brief =>
       dispatch({
