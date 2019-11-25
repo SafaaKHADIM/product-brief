@@ -12,7 +12,7 @@ export const fetchProducts = () => dispatch => {
     );
 };
 
-export const fetchBriefs = () => dispatch => {
+export const fetchBriefs =  () => dispatch => {
   axios.get('http://localhost:3000/briefs')
     .then(briefs =>
       dispatch({
@@ -21,6 +21,7 @@ export const fetchBriefs = () => dispatch => {
       })
     );
 };
+
 
 
 export const createBrief = postData => dispatch => {
@@ -37,10 +38,10 @@ export const createBrief = postData => dispatch => {
 
 
 export const findproduct = (id) => dispatch => {
-  axios.get('http://localhost:3000/fetchProducts?'+id)
+  axios.get('http://localhost:3000/products?'+id)
     .then(product =>
       dispatch({
-        type: FETCH_BRIEFS,
+        type: FIND_PRODUCT_BY_ID,
         payload: product
       })
     );

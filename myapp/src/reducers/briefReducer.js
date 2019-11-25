@@ -4,7 +4,8 @@ const initialState = {
   products: [],
   briefs: [],
   brief: {},
-  product:''
+  product:[],
+  productsname:[]
 };
 
 export default function(state = initialState, action) {
