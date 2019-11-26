@@ -6,7 +6,8 @@ import { Provider } from 'react-redux';
 
 import BriefForm from './components/Briefform';
 import BriefList from './components/Brieflist';
-import Header from "./components/header/header"
+import Header from "./components/header/header";
+import Robot from "./components/robot/robot";
 
 import store from './store';
 
@@ -17,8 +18,9 @@ function App() {
     <Router>
       <div className="App">
         <Header />
+        <Robot />
         <br/>
-        <Route path="/" exact component={BriefForm} />
+        <Route path="/newbrief" exact component={BriefForm} />
         <Route path="/list" exact component={BriefList} />
       </div>
     </Router>
